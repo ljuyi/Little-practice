@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片轮播</title>
+<link type="text/css" rel="stylesheet" href="css/common.css" />
+	<style type="text/css">
+		.play{width: 400px;height:400px;margin-top: 10px;overflow:hidden;position:relative;margin:0 auto;}
+		#content{width:2800px;height:400px;position:absolute;}
+		#content li{float:left;margin:0;width:400px;height:400px;}
+		img{width:400px;height:400px;}
+	</style>
+</head>
+<body>
+<div class="play">
+	<ul id="content" class="clearfix">
+		<li><img src="image/gd5.png"/></li>
+		<li><img src="image/gd1.png"/></li>
+		<li><img src="image/gd2.png"/></li>
+		<li><img src="image/gd3.png"/></li>
+		<li><img src="image/gd4.png"/></li>
+		<li><img src="image/gd5.png"/></li>
+		<li><img src="image/gd1.png"/></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	var oBtn1=document.getElementById("btn1");
+	var oBtn2=document.getElementById("btn2");
+	var oUl=document.getElementById("content");
+	var times=0;
+	var picLeft=-400;
+	oUl.style.left=-400+'px';
+	var play=function(){
+		times++;
+		if(times==21)
+			{
+				times=0;
+				if(picLeft==-2400)
+				{
+					picLeft=-400;
+					oUl.style.left=picLeft+'px';
+				}
+				setTimeout('play()',3000);
+			}
+		else
+			{
+				picLeft-=20;
+				oUl.style.left=picLeft+'px';
+				setTimeout('play()',70);
+			}
+	};
+	setTimeout('play()',3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>花样搜索栏</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+<style type="text/css">
+	body{background:#000;}
+	#content{width:130px;height:50px;border-radius:30px;background:#fff;padding-left:10px;margin:0 auto;position:absolute;margin-top:50px;}
+	#btn{width:100px;background:#cf79ae;border-radius: 30px;position:absolute;text-align:center;line-height:30px;color:#fff;border:none;cursor:pointer;opacity:0;display:none;border:2px #cf798b solid;}
+</style>
+</head>
+<body>
+	<div class="header">
+			<input type="text" id="content">
+			<input type="submit" value="搜索" id="btn">
+	</div>
+</body>
+<script type="text/javascript">
+	var oText=document.getElementById("content");
+	var cWidth=document.body.clientWidth;
+	var conTop=oText.offsetTop;
+	var conHeight=oText.offsetHeight;
+	var conWidth=oText.offsetWidth;
+	oText.style.left=(cWidth-conWidth)/2+'px';
+	var conLeft=oText.offsetLeft;
+	var oBtn=document.getElementById("btn");
+	oBtn.style.top=conTop+'px';
+	oBtn.style.height=conHeight+'px';
+	var pWidth=oText.offsetWidth;
+	var oPacity=1;
+	oBtn.style.right=conLeft+'px';
+	var sMall=function(){
+		pWidth-=30;
+		conLeft+=15;
+		if(pWidth<130)
+		{
+			oBtn.style.display='none';
+			return;
+		}
+		else
+		{
+			if(oPacity>0)
+				oPacity-=0.1;
+			oText.style.width=pWidth+'px';
+			oText.style.left=conLeft+'px';
+			oBtn.style.opacity=oPacity;
+			oBtn.style.right=conLeft+'px';
+			setTimeout('sMall()',10);
+		}
+	};
+	var bIg=function(){
+		oBtn.style.display='block';
+		pWidth+=30;
+		conLeft-=15;
+		if(pWidth>=500)
+			return;
+		else
+		{	
+			if(oPacity<1)
+				oPacity+=0.1;
+			oText.style.width=pWidth+'px';
+			oText.style.left=conLeft+'px';
+			oBtn.style.opacity=oPacity;
+			oBtn.style.right=conLeft+'px';
+			setTimeout('bIg()',10);
+		}
+	};
+	oText.onblur=function(){
+		sMall();
+	};
+	oText.onfocus=function(){
+		bIg();
+	};
+</script>
+</html>

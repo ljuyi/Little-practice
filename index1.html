@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<style type="text/css">
+#time{width:100%;margin:0 auto;height:350px;}
+#hour,#minute,#second{width:300px;position:absolute;height:350px;float:left;}
+#hour{top:10px;left:50px;}
+#minute{top:10px;left:490px;}
+#second{top:10px;left:930px;}
+#sem,#sem1{width:80px;position:absolute;height:320px;}
+#sem{left:380px;}
+#sem1{left:820px;}
+#hour div div,#minute div div,#second div div,#sem div,#sem1 div{width:20px;height:20px;position:absolute;border-radius:25px;}
+#hourh,#hourl,#minuteh,#minutel,#secondh,#secondl{width:150px;height:200px;position:absolute;}
+#hourh,#minuteh,#secondh{left:0;}
+#hourl,#minutel,#secondl{left:160px;}
+</style>
+</head>
+<body>
+<div id="time">
+	<div id="hour">
+    	<div id="hourh">
+        </div>
+        <div id="hourl">
+        </div>
+    </div>
+    <div id="sem">
+    </div>
+    <div id="minute">
+    	<div id="minuteh">
+        </div>
+        <div id="minutel">
+        </div>
+    </div>
+    <div id="sem1">
+    </div>
+    <div id="second">
+    	<div id="secondh">
+        </div>
+        <div id="secondl">
+        </div>
+    </div>
+</div>
+<script>
+var arry = [
+	[//arry 0
+	[0,1,1,1,1,1,0],
+	[1,1,1,1,1,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[1,1,1,1,1,1,1],
+	[0,1,1,1,1,1,0]
+	],
+
+	[//arry 1
+	[0,0,0,1,1,0,0],
+	[0,0,1,1,1,0,0],
+	[0,1,1,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,1,1,1,1,1,0],
+	[0,1,1,1,1,1,0]
+	],
+
+	[//arry 2
+	[0,0,1,1,1,0,0],
+	[0,1,1,0,1,1,0],
+	[1,1,0,0,0,1,1],
+	[0,0,0,0,0,1,1],
+	[0,0,0,0,1,1,0],
+	[0,0,0,1,1,0,0],
+	[0,0,1,1,0,0,0],
+	[0,1,1,0,0,0,1],
+	[1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1]
+	],
+
+	[//arry 3
+	[0,0,1,1,1,0,0],
+	[0,1,1,0,1,1,0],
+	[1,1,0,0,0,1,1],
+	[0,0,0,0,0,1,1],
+	[0,0,0,1,1,1,0],
+	[0,0,0,1,1,1,0],
+	[0,0,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[0,1,1,0,1,1,0],
+	[0,0,1,1,1,0,0]
+	],
+
+	[//arry 4
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,1,0,1,0,0],
+	[0,1,1,0,1,0,0],
+	[1,1,0,0,1,0,0],
+	[1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0]
+	],
+
+	[//arry 5
+	[0,1,1,1,1,1,0],
+	[0,1,1,1,1,1,0],
+	[0,1,1,0,0,0,0],
+	[0,1,1,1,1,0,0],
+	[0,0,0,0,1,1,0],
+	[0,0,0,0,0,1,1],
+	[0,0,0,0,0,1,1],
+	[0,0,0,0,1,1,0],
+	[0,1,1,0,1,1,0],
+	[0,1,1,1,1,0,0]
+	],
+
+	[//arry 6
+	[0,0,1,1,1,0,0],
+	[0,1,1,0,1,1,0],
+	[0,1,1,0,0,0,0],
+	[0,1,1,0,0,0,0],
+	[0,1,1,1,1,1,0],
+	[0,1,1,0,1,1,0],
+	[0,1,1,0,0,1,1],
+	[0,1,1,0,0,1,1],
+	[0,1,1,0,1,1,0],
+	[0,0,1,1,1,0,0]
+	],
+
+	[//arry 7
+	[0,1,1,1,1,0,0],
+	[1,1,1,1,1,1,0],
+	[1,1,0,0,1,1,0],
+	[1,1,0,0,1,1,0],
+	[0,0,0,1,1,0,0],
+	[0,0,0,1,1,0,0],
+	[0,0,1,1,0,0,0],
+	[0,0,1,1,0,0,0],
+	[0,0,1,1,0,0,0],
+	[0,0,1,1,0,0,0]
+	],
+
+	[//arry 8
+	[0,0,1,1,1,0,0],
+	[0,1,1,0,1,1,0],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[0,1,1,1,1,1,0],
+	[0,1,1,1,1,1,0],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[0,1,1,0,1,1,0],
+	[0,0,1,1,1,0,0]
+	],
+
+	[//arry 9
+	[0,0,1,1,1,0,0],
+	[0,1,1,0,1,1,0],
+	[1,1,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[0,1,1,0,0,1,1],
+	[0,0,1,1,1,1,1],
+	[0,0,0,0,0,1,1],
+	[1,1,0,0,0,1,1],
+	[0,1,1,0,0,1,1],
+	[0,0,1,1,1,1,0]
+	],
+	[
+	[0,0,0,0],
+	[0,0,0,0],
+	[0,1,1,0],
+	[0,1,1,0],
+	[0,0,0,0],
+	[0,0,0,0],
+	[0,1,1,0],
+	[0,1,1,0],
+	[0,0,0,0],
+	[0,0,0,0]
+	]
+];
+
+var oSem = document.getElementById("sem");
+var oSemm = oSem.getElementsByTagName("div");
+var oSem1 = document.getElementById("sem1");
+var oSemm1 = oSem1.getElementsByTagName("div");
+var str = "";
+for(var i=0;i<70;i++)
+	str += "<div></div>";
+var str1 = "";
+for(var i=0;i<40;i++)
+	str1 += "<div></div>";
+oSem.innerHTML = str1;
+oSem1.innerHTML = str1;
+for(var i=0;i<40;i++)
+{
+	oSemm[i].style.top = parseInt(i/4)*21+"px";
+	oSemm[i].style.left = i%4*21+"px";
+	oSemm1[i].style.top = parseInt(i/4)*21+"px";
+	oSemm1[i].style.left = i%4*21+"px";
+}
+function play(){
+	var oDhourh = document.getElementById("hourh");
+	var oDhourl = document.getElementById("hourl");
+	var oDhh = oDhourh.getElementsByTagName("div");
+	var oDhl = oDhourl.getElementsByTagName("div");
+	
+	var oDminuteh = document.getElementById("minuteh");
+	var oDminutel = document.getElementById("minutel");
+	var oDmh = oDminuteh.getElementsByTagName("div");
+	var oDml = oDminutel.getElementsByTagName("div");
+	
+	var oDsecondh = document.getElementById("secondh");
+	var oDsecondl = document.getElementById("secondl");
+	var oDsh = oDsecondh.getElementsByTagName("div");
+	var oDsl = oDsecondl.getElementsByTagName("div");
+	
+	var oTime = new Date();
+	var oHour = oTime.getHours();
+	var oMinute = oTime.getMinutes();
+	var oSecond = oTime.getSeconds();
+	var num = parseInt(oHour/10);
+	oDhourh.innerHTML = str;
+	oDhourl.innerHTML = str;
+	oDminuteh.innerHTML = str;
+	oDminutel.innerHTML = str;
+	oDsecondh.innerHTML = str;
+	oDsecondl.innerHTML = str;
+	
+	for(var i=0;i<70;i++)
+		  {
+			  oDhh[i].style.top = parseInt(i/7)*21+"px";
+			  oDhh[i].style.left = i%7*21+"px";
+			  oDhl[i].style.top = parseInt(i/7)*21+"px";
+			  oDhl[i].style.left = i%7*21+"px";
+			  oDmh[i].style.top = parseInt(i/7)*21+"px";
+			  oDmh[i].style.left = i%7*21+"px";
+			  oDml[i].style.top = parseInt(i/7)*21+"px";
+			  oDml[i].style.left = i%7*21+"px";
+			  oDsh[i].style.top = parseInt(i/7)*21+"px";
+			  oDsh[i].style.left = i%7*21+"px";
+			  oDsl[i].style.top = parseInt(i/7)*21+"px";
+			  oDsl[i].style.left = i%7*21+"px";
+		  }
+		  
+		  function ballTime(x,y,num,obj){
+			  for(var i=0;i<y;i++)
+			  	for(var j=0;j<x;j++){
+					if(arry[num][i][j]==1)
+						if(obj==oSemm||obj==oSemm1)
+							obj[i*4+j].style.backgroundColor = '#008';
+						else
+							obj[i*7+j].style.backgroundColor = '#008'; 
+				}
+		};	  
+	ballTime(7,10,parseInt(oHour/10),oDhh);
+	ballTime(7,10,parseInt(oHour%10),oDhl);
+	ballTime(7,10,parseInt(oMinute/10),oDmh);
+	ballTime(7,10,parseInt(oMinute%10),oDml);
+	ballTime(7,10,parseInt(oSecond/10),oDsh);
+	ballTime(7,10,parseInt(oSecond%10),oDsl);
+	ballTime(4,10,10,oSemm);
+	ballTime(4,10,10,oSemm1);
+	setTimeout('play()',1000);
+};
+play();
+</script>
+</body>
+</html>
