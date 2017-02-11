@@ -1,6 +1,5 @@
 ## ball——时钟（带特效）
 #### [demo示例](http://htmlpreview.github.io/?https://github.com/ljuyi/javascript/blob/master/ball.html)
-（jcanvascript.js文件无法加载，目前没有解决这个问题）
 #### 原理说明
 1.在之前没有小球掉落的基础上，每过50ms判断一次，时间是否更新<br/>
 2.若时间没更新，则不绘制掉落小球；若时间更新，则绘制掉落小球，并将所有掉落小球放在一个数组里<br/>
