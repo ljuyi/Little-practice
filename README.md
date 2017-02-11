@@ -1,5 +1,4 @@
-## index1——倒计时
-
+## index1——时钟
 #### [demo示例](http://htmlpreview.github.io/?https://github.com/ljuyi/javascript/blob/junyi.li/index1.html)
 
 #### 原理说明
