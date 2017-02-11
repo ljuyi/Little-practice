@@ -1,5 +1,4 @@
-## ball——倒计时
-
+## ball——时钟（带特效）
 #### [demo示例](http://htmlpreview.github.io/?https://github.com/ljuyi/javascript/blob/master/ball.html)
 （jcanvascript.js文件无法加载，目前没有解决这个问题）
 #### 原理说明
